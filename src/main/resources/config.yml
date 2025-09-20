@@ -1,0 +1,143 @@
+# WhitelistBot Discord Configuration
+# Replace the values with your own settings
+
+# Discord bot token (required)
+discord-token: "YOUR_BOT_TOKEN_HERE"
+
+# Channel ID where players make their requests (required)
+discord-channel-request: "123456789012345678"
+
+# Admin channel ID where requests are sent (required)
+discord-channel-admin: "123456789012345678"
+
+# Category ID where ticket channels will be created (required)
+discord-ticket-category: "123456789012345678"
+
+# List of Discord role IDs authorized to handle requests
+# If the list is empty, all members can handle requests
+allowed-roles:
+  - "123456789012345678"  # Admin Role
+  - "123456789012345678"  # Moderator Role
+
+# Prefix displayed in plugin logs
+prefix: "[WhitelistBot]"
+
+# Message configuration (optional - for future improvements)
+messages:
+  request-sent: "✅ Your request has been sent to administrators!"
+  request-approved: "🎉 Your whitelist request has been approved!"
+  request-denied: "❌ Your whitelist request has been denied."
+  invalid-username: "❌ The provided Minecraft username is not valid."
+  already-requested: "⚠️ You already have a pending request."
+  already-whitelisted: "✅ You are already whitelisted on our server! No need to request again."
+  already-pending: "⏳ You already have a pending whitelist request. Please wait for admin review."
+  username-taken: "❌ This Minecraft username is already whitelisted by another Discord user!"
+  request-expired: "❌ Error: Request expired or not found."
+  no-permission: "❌ You don't have permission to perform this action."
+  invalid-button: "❌ Invalid button ID."
+  request-not-found: "❌ Request not found."
+  processing-error: "❌ Error processing action."
+
+# SQLite database configuration (advanced)
+database:
+  # Database file name
+  filename: "whitelist.db"
+  
+  # Enable SQL query logging (debug)
+  debug-sql: false
+
+# Discord bot configuration (advanced)
+discord:
+  # Interaction timeout (in seconds)
+  interaction-timeout: 300
+  
+  # Embed colors (hexadecimal format)
+  colors:
+    pending: "#FF8C00"    # Orange
+    approved: "#00FF00"   # Green
+    denied: "#FF0000"     # Red
+    ticket: "#00BFFF"     # Sky Blue
+    list: "#00FFFF"       # Cyan
+    verification: "#FFA500" # Orange
+    
+  # Custom messages for embeds
+  embed-messages:
+    # Main request embed
+    request-title: "🎮 Minecraft Whitelist Request"
+    request-description: "Click the button below to request access to our Minecraft server!"
+    request-footer: "Whitelist Bot"
+    request-button-text: "Request Whitelist"
+    
+    # Admin notification embed
+    admin-title: "📋 New Whitelist Request"
+    admin-footer: "Awaiting admin review"
+    admin-approve-button: "✅ Approve"
+    admin-deny-button: "❌ Deny"
+    admin-ticket-button: "🎫 [DEV]Create Ticket"
+    
+    # Verification embed
+    verification-title: "🔍 Verification"
+    verification-description: "Please verify that the information is correct before confirming your request."
+    verification-footer: "Check your NameMC profile"
+    verification-namemc-text: "**NameMC Profile:** [Click here](https://namemc.com/profile/{username})"
+    verification-confirm-button: "✅ Confirm Request"
+    verification-cancel-button: "❌ Cancel"
+    
+    # List embed
+    list-title: "📋 Whitelist Requests List"
+    list-footer-template: "Page {current}/{total} • Total: {count} requests"
+    list-empty: "📋 No whitelist requests found."
+    list-prev-button: "◀ Previous"
+    list-next-button: "Next ▶"
+    list-page-info: "Page {current}/{total}"
+    
+    # Status update embeds
+    approval-title: "📋 Whitelist Request Update"
+    approval-message: "🎉 **Great news!** Your whitelist request has been **approved**!\n\n**Minecraft Username:** {username}\n**Approved by:** {admin}\n**Date:** {date}\n\nYou can now join our Minecraft server! Welcome aboard! 🎮"
+    
+    denial-title: "📋 Whitelist Request Update"
+    denial-message: "😔 **We're sorry to inform you** that your whitelist request has been **denied**.\n\n**Minecraft Username:** {username}\n**Denied by:** {admin}\n**Date:** {date}\n\nIf you have questions, please contact our staff team."
+    
+    ticket-title: "📋 Whitelist Request Update"
+    ticket-message: "🎫 **Your whitelist request requires additional review.**\n\n**Minecraft Username:** {username}\n**Staff Member:** {admin}\n**Date:** {date}\n\nA ticket has been created for further discussion. A staff member will contact you soon."
+
+# Security settings
+security:
+  # Request limit per user per day
+  max-requests-per-day: 2
+  
+  # Block users with recent Discord accounts (in days)
+  min-account-age-days: 1
+  
+  # Enable automatic Minecraft username verification via Mojang API
+  verify-minecraft-usernames: true
+  
+  # Prevent duplicate Minecraft usernames across different Discord users
+  prevent-duplicate-usernames: true
+
+# Pagination settings
+pagination:
+  # Items per page in list commands
+  items-per-page: 10
+  
+  # Maximum pages to display
+  max-pages: 50
+
+# Logging configuration
+logging:
+  # Log whitelist additions/removals
+  log-whitelist-changes: true
+  
+  # Log DM sending attempts
+  log-dm-attempts: true
+  
+  # Log admin actions
+  log-admin-actions: true
+
+# Auto-cleanup settings
+cleanup:
+  # Automatically remove old denied requests (in days, 0 = disabled)
+  remove-denied-after-days: 30
+  
+  # Automatically remove old processed requests (in days, 0 = disabled)
+  remove-processed-after-days: 90

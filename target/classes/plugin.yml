@@ -1,0 +1,33 @@
+name: WhitelistBot
+main: fr.yourserver.whitelistbot.WhitelistBot
+version: 1.0.0
+description: WhitelistBot for minecraft Server.
+author: VrcFoss
+website: https://vrcfoss.fr
+
+api-version: 1.20
+depend: []
+softdepend: []
+
+commands:
+  lookup:
+    description: Rechercher les informations Discord d'un joueur Minecraft
+    usage: /lookup <pseudo>
+    aliases: [wlookup, searchplayer]
+    permission: whitelistbot.lookup
+
+permissions:
+  whitelistbot.*:
+    description: Accès complet au plugin WhitelistBot
+    default: op
+    children:
+      whitelistbot.lookup: true
+      whitelistbot.admin: true
+  
+  whitelistbot.lookup:
+    description: Permet d'utiliser la commande /lookup
+    default: op
+  
+  whitelistbot.admin:
+    description: Accès aux fonctionnalités d'administration
+    default: op

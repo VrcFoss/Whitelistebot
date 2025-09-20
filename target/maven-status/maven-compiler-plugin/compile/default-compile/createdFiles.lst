@@ -1,0 +1,5 @@
+fr\yourserver\whitelistbot\commands\LookupCommand.class
+fr\yourserver\whitelistbot\database\DatabaseManager.class
+fr\yourserver\whitelistbot\discord\DiscordBotManager.class
+fr\yourserver\whitelistbot\database\WhitelistRequest.class
+fr\yourserver\whitelistbot\WhitelistBot.class
